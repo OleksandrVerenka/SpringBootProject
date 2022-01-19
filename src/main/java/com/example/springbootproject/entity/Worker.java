@@ -2,26 +2,27 @@ package com.example.springbootproject.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import java.util.List;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
-@Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Data
 @Entity
-public class Departure {
+public class Worker {
 
     @Id
     private int id;
-
-    @Column
     private String name;
+    private double salary;
 
-    @Column
-    private String location;
+    @ManyToOne
+    @JoinColumn(name = "departure_id", nullable = false)
+    private Departure departure;
 }
